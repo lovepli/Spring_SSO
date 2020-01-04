@@ -40,7 +40,7 @@ public class UserService {
     public ItdragonResult registerUser(User user) {
     	// 检查用户名是否注册，一般在前端验证的时候处理，因为注册不存在高并发的情况，这里再加一层查询是不影响性能的
     	if (null != userRepository.findByAccount(user.getAccount())) {
-    		return ItdragonResult.build(400, "");
+    		return ItdragonResult.build(400, "用户信息已经注册，请直接登录！");
     	}
     	userRepository.save(user);
     	// 注册成功后选择发送邮件激活。现在一般都是短信验证码
